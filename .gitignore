@@ -1,0 +1,14 @@
+# Client data never enters this repository (2026-10-08).
+# Intake answers, client deployments and generated reports are per client;
+# evidence belongs to a client deployment, never to the template.
+client-variable-map.json
+**/client-variable-map.json
+deployments/
+**/compliance-report-*.txt
+**/docs/evidence/restricted/*
+**/docs/evidence/business/*
+!**/docs/evidence/restricted/.gitkeep
+!**/docs/evidence/business/.gitkeep
+desktop.ini
+Thumbs.db
+.DS_Store

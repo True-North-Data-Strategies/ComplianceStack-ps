@@ -1,0 +1,584 @@
+{
+  "version": 1,
+  "description": "Canonical questionnaire spec shared by the PowerShell and TypeScript versions. Update this file, then copy to the other stack.",
+  "tokens": {
+    "ps_style": "[BRACKET_NAME]",
+    "ts_style": "{{HANDLEBAR_NAME}}"
+  },
+  "sections": [
+    {
+      "id": "core",
+      "title": "Core Company Info",
+      "fields": [
+        {
+          "id": "companyLegalName",
+          "label": "Company Legal Name",
+          "example": "Acme Federal Services LLC",
+          "type": "text",
+          "required": true,
+          "ps_token": "COMPANY_LEGAL_NAME",
+          "ts_token": "COMPANY_NAME",
+          "ts_field": "companyName"
+        },
+        {
+          "id": "companyShortName",
+          "label": "Company Short Name",
+          "example": "Acme Federal",
+          "type": "text",
+          "required": false,
+          "ps_token": "COMPANY_NAME",
+          "ts_token": "COMPANY_SHORT_NAME",
+          "ts_field": "companyShortName"
+        },
+        {
+          "id": "companyAbbreviation",
+          "label": "Company Abbreviation",
+          "example": "AFS",
+          "type": "text",
+          "required": false,
+          "ps_token": "COMPANY_ABBREVIATION",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "primaryContact",
+          "label": "Primary Contact (Full Name)",
+          "example": "Jane Doe",
+          "type": "text",
+          "required": true,
+          "ps_token": "OWNER_NAME",
+          "ts_token": "PRIMARY_CONTACT",
+          "ts_field": "primaryContact"
+        },
+        {
+          "id": "contactEmail",
+          "label": "Contact Email",
+          "example": "jane.doe@acmefederal.com",
+          "type": "email",
+          "required": true,
+          "ps_token": "CONTACT_EMAIL",
+          "ts_token": "COMPANY_EMAIL",
+          "ts_field": "companyEmail"
+        },
+        {
+          "id": "contactPhone",
+          "label": "Contact Phone",
+          "example": "+1 (719) 555-0142",
+          "type": "tel",
+          "required": false,
+          "ps_token": "CONTACT_PHONE",
+          "ts_token": "COMPANY_PHONE",
+          "ts_field": "companyPhone"
+        },
+        {
+          "id": "website",
+          "label": "Company Website",
+          "example": "https://acmefederal.com",
+          "type": "url",
+          "required": false,
+          "ps_token": "COMPANY_WEBSITE",
+          "ts_token": "WEBSITE",
+          "ts_field": "website"
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "title": "Location",
+      "fields": [
+        {
+          "id": "companyAddress",
+          "label": "Street Address",
+          "example": "123 Pikes Peak Ave",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "COMPANY_ADDRESS",
+          "ts_field": "companyAddress"
+        },
+        {
+          "id": "companyCity",
+          "label": "City",
+          "example": "Colorado Springs",
+          "type": "text",
+          "required": false,
+          "ps_token": "COMPANY_CITY",
+          "ts_token": "COMPANY_CITY",
+          "ts_field": "companyCity"
+        },
+        {
+          "id": "companyState",
+          "label": "State",
+          "example": "CO",
+          "type": "text",
+          "required": false,
+          "ps_token": "GOVERNING_STATE",
+          "ts_token": "COMPANY_STATE",
+          "ts_field": "companyState"
+        },
+        {
+          "id": "companyZip",
+          "label": "ZIP",
+          "example": "80903",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "COMPANY_ZIP",
+          "ts_field": "companyZip"
+        },
+        {
+          "id": "companyCityStateZip",
+          "label": "Full City/State/ZIP (one line)",
+          "example": "Colorado Springs, CO 80903",
+          "type": "text",
+          "required": false,
+          "ps_token": "COMPANY_CITY_STATE_ZIP",
+          "ts_token": null,
+          "ts_field": null,
+          "note": "PowerShell templates use this as a single line. TS builds it from city/state/zip."
+        },
+        {
+          "id": "governingJurisdiction",
+          "label": "Governing Jurisdiction",
+          "example": "State of Colorado",
+          "type": "text",
+          "required": false,
+          "ps_token": "GOVERNING_JURISDICTION",
+          "ts_token": null,
+          "ts_field": null
+        }
+      ]
+    },
+    {
+      "id": "legal",
+      "title": "Legal / Entity",
+      "fields": [
+        {
+          "id": "ein",
+          "label": "EIN (Tax ID)",
+          "example": "12-3456789",
+          "type": "text",
+          "required": false,
+          "ps_token": "COMPANY_EIN",
+          "ts_token": "EIN",
+          "ts_field": "ein"
+        },
+        {
+          "id": "stateOfIncorporation",
+          "label": "State of Incorporation",
+          "example": "Colorado",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "STATE_OF_INCORPORATION",
+          "ts_field": "stateOfIncorporation"
+        },
+        {
+          "id": "yearFounded",
+          "label": "Year Founded",
+          "example": "2023",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "YEAR_FOUNDED",
+          "ts_field": "yearFounded"
+        },
+        {
+          "id": "entityType",
+          "label": "Entity Type",
+          "example": "LLC",
+          "type": "select",
+          "options": ["LLC", "Corporation", "S-Corp", "Partnership", "Sole Proprietor", "Non-profit"],
+          "required": false,
+          "ps_token": null,
+          "ts_token": "ENTITY_TYPE",
+          "ts_field": "entityType"
+        },
+        {
+          "id": "stateRegistrationId",
+          "label": "State Registration ID",
+          "example": "20231234567",
+          "type": "text",
+          "required": false,
+          "ps_token": "STATE_REGISTRATION_ID",
+          "ts_token": null,
+          "ts_field": null
+        }
+      ]
+    },
+    {
+      "id": "government",
+      "title": "Government Registration",
+      "fields": [
+        {
+          "id": "samUei",
+          "label": "SAM.gov UEI",
+          "example": "ABC123DEF456",
+          "type": "text",
+          "required": false,
+          "ps_token": "COMPANY_UEI",
+          "ts_token": "SAM_UEI",
+          "ts_field": "samUei"
+        },
+        {
+          "id": "cageCode",
+          "label": "CAGE Code",
+          "example": "9ABCD",
+          "type": "text",
+          "required": false,
+          "ps_token": "COMPANY_CAGE_CODE",
+          "ts_token": "CAGE_CODE",
+          "ts_field": "cageCode"
+        },
+        {
+          "id": "dunsNumber",
+          "label": "DUNS Number",
+          "example": "123456789",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "DUNS_NUMBER",
+          "ts_field": "dunsNumber"
+        },
+        {
+          "id": "naicsCodes",
+          "label": "NAICS Codes (comma-separated)",
+          "example": "541512, 541519",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "NAICS_CODES",
+          "ts_field": "naicsCodes"
+        },
+        {
+          "id": "sicCodes",
+          "label": "SIC Codes (comma-separated)",
+          "example": "7372, 7389",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "SIC_CODES",
+          "ts_field": "sicCodes"
+        },
+        {
+          "id": "businessDesignation",
+          "label": "Business Designation",
+          "example": "Service-Disabled Veteran-Owned Small Business",
+          "type": "text",
+          "required": false,
+          "ps_token": "BUSINESS_DESIGNATION",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "setAsideStatus",
+          "label": "Set-Aside Status",
+          "example": "SDVOSB",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "SET_ASIDE_STATUS",
+          "ts_field": "setAsideStatus"
+        },
+        {
+          "id": "ownerVeteranStatus",
+          "label": "Owner Veteran Status",
+          "example": "Service-Disabled Veteran",
+          "type": "text",
+          "required": false,
+          "ps_token": "OWNER_VETERAN_STATUS",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "samExpirationDate",
+          "label": "SAM.gov Expiration Date",
+          "example": "2026-11-13",
+          "type": "date",
+          "required": false,
+          "ps_token": "SAM_EXPIRATION_DATE",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "contractTypes",
+          "label": "Contract Types",
+          "example": "FFP, T&M, IDIQ",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "CONTRACT_TYPES",
+          "ts_field": "contractTypes"
+        },
+        {
+          "id": "clearanceLevel",
+          "label": "Facility Clearance Level",
+          "example": "Secret",
+          "type": "select",
+          "options": ["None", "Public Trust", "Confidential", "Secret", "Top Secret", "TS/SCI"],
+          "required": false,
+          "ps_token": null,
+          "ts_token": "CLEARANCE_LEVEL",
+          "ts_field": "clearanceLevel"
+        }
+      ]
+    },
+    {
+      "id": "personnel",
+      "title": "Personnel",
+      "fields": [
+        {
+          "id": "ceo",
+          "label": "CEO",
+          "example": "Jane Doe",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "CEO",
+          "ts_field": "ceo"
+        },
+        {
+          "id": "cfo",
+          "label": "CFO",
+          "example": "Alex Chen",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "CFO",
+          "ts_field": "cfo"
+        },
+        {
+          "id": "cto",
+          "label": "CTO",
+          "example": "Priya Patel",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "CTO",
+          "ts_field": "cto"
+        },
+        {
+          "id": "ciso",
+          "label": "CISO",
+          "example": "Marcus Reed",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "CISO",
+          "ts_field": "ciso"
+        },
+        {
+          "id": "itPoc",
+          "label": "IT Point of Contact",
+          "example": "Sam Lee",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "IT_POC",
+          "ts_field": "itPoc"
+        },
+        {
+          "id": "securityPoc",
+          "label": "Security Point of Contact",
+          "example": "Morgan Rivera",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "SECURITY_POC",
+          "ts_field": "securityPoc"
+        },
+        {
+          "id": "compliancePoc",
+          "label": "Compliance Point of Contact",
+          "example": "Taylor Kim",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "COMPLIANCE_POC",
+          "ts_field": "compliancePoc"
+        },
+        {
+          "id": "hrPoc",
+          "label": "HR Director",
+          "example": "Jordan Price",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "HR_POC",
+          "ts_field": "hrPoc"
+        },
+        {
+          "id": "reviewerTitle",
+          "label": "Reviewer Title (for document metadata)",
+          "example": "Owner / Compliance Officer",
+          "type": "text",
+          "required": false,
+          "ps_token": "REVIEWER_TITLE",
+          "ts_token": null,
+          "ts_field": null
+        }
+      ]
+    },
+    {
+      "id": "operations",
+      "title": "Operations & Business",
+      "fields": [
+        {
+          "id": "employeeCount",
+          "label": "Employee Count",
+          "example": "12",
+          "type": "number",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "EMPLOYEE_COUNT",
+          "ts_field": "employeeCount"
+        },
+        {
+          "id": "annualRevenue",
+          "label": "Annual Revenue",
+          "example": "$2.4M",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "ANNUAL_REVENUE",
+          "ts_field": "annualRevenue"
+        },
+        {
+          "id": "remoteWorkforce",
+          "label": "Remote Workforce?",
+          "example": "Yes, fully remote",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "REMOTE_WORKFORCE",
+          "ts_field": "remoteWorkforce"
+        },
+        {
+          "id": "insuranceCarrier",
+          "label": "Insurance Carrier",
+          "example": "The Hartford",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "INSURANCE_CARRIER",
+          "ts_field": "insuranceCarrier"
+        },
+        {
+          "id": "cyberInsurance",
+          "label": "Cyber Insurance Policy",
+          "example": "Coalition $1M aggregate",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "CYBER_INSURANCE",
+          "ts_field": "cyberInsurance"
+        }
+      ]
+    },
+    {
+      "id": "cloud",
+      "title": "Cloud Stack (TNDS defaults shown)",
+      "fields": [
+        {
+          "id": "cloudProvider",
+          "label": "Cloud Provider",
+          "example": "Google",
+          "default": "Google",
+          "type": "text",
+          "required": false,
+          "ps_token": "CLOUD_PROVIDER",
+          "ts_token": "CLOUD_PROVIDER",
+          "ts_field": "cloudProvider"
+        },
+        {
+          "id": "cloudPlatformWorkspace",
+          "label": "Cloud Workspace Platform",
+          "example": "Google Workspace",
+          "default": "Google Workspace",
+          "type": "text",
+          "required": false,
+          "ps_token": "CLOUD_PLATFORM_WORKSPACE",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "cloudProviderDomain",
+          "label": "Cloud Provider Domain",
+          "example": "google.com",
+          "default": "google.com",
+          "type": "text",
+          "required": false,
+          "ps_token": "CLOUD_PROVIDER_DOMAIN",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "cloudPlatform",
+          "label": "Cloud Platform",
+          "example": "Google Cloud Platform",
+          "default": "Google Cloud Platform",
+          "type": "text",
+          "required": false,
+          "ps_token": "CLOUD_PLATFORM",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "cloudAiPlatform",
+          "label": "Cloud AI Platform",
+          "example": "Google AI / Vertex AI",
+          "default": "Google AI / Vertex AI",
+          "type": "text",
+          "required": false,
+          "ps_token": "CLOUD_AI_PLATFORM",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "cloudIam",
+          "label": "Cloud IAM System",
+          "example": "Google Cloud IAM",
+          "default": "Google Cloud IAM",
+          "type": "text",
+          "required": false,
+          "ps_token": "CLOUD_IAM",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "cloudPartner",
+          "label": "Cloud Partner",
+          "example": "Google Cloud Partner",
+          "default": "Google Cloud Partner",
+          "type": "text",
+          "required": false,
+          "ps_token": "CLOUD_PARTNER",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "cloudPartnerReseller",
+          "label": "Cloud Partner/Reseller",
+          "example": "Carahsoft",
+          "default": "Carahsoft",
+          "type": "text",
+          "required": false,
+          "ps_token": "CLOUD_PARTNER_RESELLER",
+          "ts_token": null,
+          "ts_field": null
+        },
+        {
+          "id": "emailPlatform",
+          "label": "Email Platform",
+          "example": "Google Workspace",
+          "default": "Google Workspace",
+          "type": "text",
+          "required": false,
+          "ps_token": null,
+          "ts_token": "EMAIL_PLATFORM",
+          "ts_field": "emailPlatform"
+        }
+      ]
+    }
+  ]
+}
