@@ -8,7 +8,7 @@ Evidence-Required:
 Status: template
 ---
 
-TRUE NORTH DATA STRATEGIES LLC
+[COMPANY_LEGAL_NAME]
 MOBILE DEVICE POLICY
 
 Purpose

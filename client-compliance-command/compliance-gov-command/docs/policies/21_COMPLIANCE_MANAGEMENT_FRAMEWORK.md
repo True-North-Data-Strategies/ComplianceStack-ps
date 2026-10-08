@@ -8,7 +8,7 @@ Evidence-Required:
 Status: template
 ---
 
-TRUE NORTH DATA STRATEGIES LLC
+[COMPANY_LEGAL_NAME]
 COMPLIANCE MANAGEMENT FRAMEWORK
 
 Purpose

@@ -125,6 +125,46 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 # -----------------------------------------
+# Step 9b: Refuse a packet that carries True North's own material (2026-10-08)
+# -----------------------------------------
+# Seventeen client-template policies once used True North's legal name as
+# their title line, and the template once shipped True North's handbook.
+# Injection only replaces [COMPANY_*] tokens and Step 10 only looks for
+# leftover tokens, so neither would catch the provider's name in a client
+# packet. Text files naming True North Data Strategies are refused unless the
+# client being deployed is True North itself; TNDS_ documents are always
+# refused.
+$mapFile = Join-Path $modulePath "client-variable-map.json"
+$clientLegalName = ""
+if (Test-Path $mapFile) {
+    $clientLegalName = [string](Get-Content $mapFile -Raw | ConvertFrom-Json).COMPANY_LEGAL_NAME
+}
+$deployingTrueNorth = $clientLegalName -like "*True North Data Strategies*"
+
+$textExtensions = @(".md", ".txt", ".json", ".yaml", ".yml", ".csv", ".html")
+$deployedFiles = @(Get-ChildItem $clientDeployDir -Recurse -File -Force)
+
+$namesProvider = @()
+if (-not $deployingTrueNorth) {
+    $namesProvider = @($deployedFiles |
+        Where-Object { $textExtensions -contains $_.Extension.ToLower() } |
+        Select-String -Pattern "True North Data Strategies" -SimpleMatch -List |
+        ForEach-Object { $_.Path })
+}
+$providerDocs = @($deployedFiles |
+    Where-Object { $_.Name -like "TNDS_*" -and @(".docx", ".pdf") -contains $_.Extension.ToLower() } |
+    ForEach-Object { $_.FullName })
+
+if (($namesProvider.Count + $providerDocs.Count) -gt 0) {
+    Write-Host "REFUSED: the client packet carries True North's own material." -ForegroundColor Red
+    foreach ($f in $namesProvider) { Write-Host "  names True North Data Strategies: $f" -ForegroundColor Yellow }
+    foreach ($f in $providerDocs)  { Write-Host "  TNDS_ document: $f" -ForegroundColor Yellow }
+    Write-Host "Fix the template, then archive $clientDeployDir before running again." -ForegroundColor Red
+    exit 1
+}
+Write-Host "Provider check passed: no True North material in the client packet." -ForegroundColor Green
+
+# -----------------------------------------
 # Step 10: ENFORCE - Fail if Placeholders Remain
 # -----------------------------------------
 Write-Host "`n[4/7] ENFORCING placeholder check..." -ForegroundColor Yellow
