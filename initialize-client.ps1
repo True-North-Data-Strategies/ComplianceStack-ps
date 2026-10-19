@@ -42,10 +42,8 @@ if (-not (Test-Path $templatePath)) {
 # -----------------------------------------
 # Step 3b: Refuse a template that carries evidence (2026-10-08)
 # -----------------------------------------
-# The template's docs\evidence folders once held the owner's identity
-# documents (DD214, VA letters, a licence photo, the EIN letter, the operating
-# agreement), and Step 5 copies the whole template into every client
-# deployment. Evidence belongs to a client deployment only, never to the
+# Step 5 copies the whole template into every client deployment, so any
+# file left in the template's docs\evidence folders would ship to every client. Evidence belongs to a client deployment only, never to the
 # template, so a template with any evidence file is refused.
 $templateEvidence = Join-Path $templatePath "docs\evidence"
 $leaked = @()

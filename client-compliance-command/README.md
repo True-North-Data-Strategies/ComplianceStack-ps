@@ -1,13 +1,12 @@
 # TNDS Compliance Command
-## compliance-gov-command | Command Protocol Implementation Module
+## compliance-gov-command | Client compliance packet module
 
 ---
 
 ## Purpose
 
-Compliance Command is a structured, deployable compliance system built on the TNDS Command Protocol. It gives organizations a clear picture of where they stand, what's missing, and what to fix — without guesswork or spreadsheet archaeology.
+Compliance Command is a structured, deployable compliance system. It gives organizations a clear picture of where they stand, what's missing, and what to fix — without guesswork or spreadsheet archaeology.
 
-Direction Protocol gets you clarity. Command Protocol gets you control.
 
 ---
 
@@ -136,12 +135,12 @@ No shared state. No cross-contamination. Clean handoff every time.
 
 ---
 
-## TNDS Service Mapping
+## How TNDS delivers it
 
-**Direction Protocol (Assessment)**
+**Assessment**
 Run validation, generate the report, identify gaps. You'll know exactly where you stand.
 
-**Command Protocol (Implementation)**
+**Implementation**
 Build the missing components, structure the compliance system, establish ongoing control processes. You'll have a system that holds up under audit.
 
 ---
